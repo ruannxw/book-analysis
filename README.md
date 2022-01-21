@@ -62,6 +62,8 @@
    - 装帧 bind
    - 丛书 series
    - ISBN isbn
+   - 得分 score
+   - 评价人数 evaluator
    - 内容简介 content
    - 作者简介 introductionAuthor
    - 目录 menu
