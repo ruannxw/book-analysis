@@ -37,3 +37,6 @@ class BookInfo:
 if __name__ == '__main__':
     bookInfo = BookInfo()
     bookInfo.run()
+
+    for start in range(0, 500, 20):
+        url = 'https://book.douban.com/subject/35534519/comments/?start=%s&limit=20&status=P&sort=new_score' % start

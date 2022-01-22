@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>图书分析系统</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/index.css"/>
+    <link rel="icon" href="../static/images/icon.png">
+</head>
+
+<body>
+<header>
+    <h1>图书分析系统</h1>
+    <div class="showTime"></div>
+    <script>
+        var t = null;
+        t = setTimeout(time, 1000); //开始运行
+        function time() {
+            clearTimeout(t); //清除定时器
+            dt = new Date();
+            var y = dt.getFullYear().toString().padStart(2, '0');
+            var mt = (dt.getMonth() + 1).toString().padStart(2, '0');
+            var day = dt.getDate().toString().padStart(2, '0');
+            var h = dt.getHours().toString().padStart(2, '0'); //获取时
+            var m = dt.getMinutes().toString().padStart(2, '0'); //获取分
+            var s = dt.getSeconds().toString().padStart(2, '0'); //获取秒
+            document.querySelector(".showTime").innerHTML = `${y}-${mt}-${day} ${h}:${m}:${s}`
+            t = setTimeout(time, 1000); //设定定时器，循环运行
+        }
+    </script>
+</header>
+<div class="mainbox">
+    <div class="container-xxl">
+        <div class="row g-0">
+            <div class="col">
+                <div class="panel ">
+                    <h2>TOP10 图书分类</h2>
+                    <div class="chart" id="top10BookCategories">
+
+                    </div>
+                    <div class="panel-footer"></div>
+                </div>
+                <div class="panel ">
+                    <h2>各月出版数量折线图</h2>
+                    <div class="chart"></div>
+                    <div class="panel-footer"></div>
+                </div>
+                <div class="panel ">
+                    <h2></h2>
+                    <div class="chart"></div>
+                    <div class="panel-footer"></div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row g-0">
+                    <div class="col">
+                        <div class="panel panel-lg">
+                            <h2>词云</h2>
+                            <div class="chart"></div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-lg-6">
+                        <div class="panel">
+                            <h2></h2>
+                            <div class="chart"></div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel">
+                            <h2></h2>
+                            <div class="chart"></div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="panel">
+                    <h2>TOP10 出版社</h2>
+                    <div class="chart"></div>
+                    <div class="panel-footer"></div>
+                </div>
+                <div class="panel">
+                    <h2></h2>
+                    <div class="chart"></div>
+                    <div class="panel-footer"></div>
+                </div>
+                <div class="panel">
+                    <h2></h2>
+                    <div class="chart"></div>
+                    <div class="panel-footer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../static/js/flexible.js"></script>
+<script src="../static/js/jquery-3.6.0.min.js"></script>
+<script src="../static/js/echarts.min.js"></script>
+<script src="../static/js/utils.js"></script>
+<script src="../static/js/data/top10BookCategories.js"></script>
+</body>
+
+</html>

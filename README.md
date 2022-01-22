@@ -31,6 +31,7 @@
    
    - 父标签 parentTag
    - 子标签 tag
+   - 数量 num
    - url
    
    例子：  
@@ -95,4 +96,18 @@
 1. 先进入 [豆瓣图书标签 (douban.com)](https://book.douban.com/tag/?view=type&icn=index-sorttags-all) 保存所有标签到 tags.csv
 2. 根据各个标签的 url [豆瓣图书标签: 小说 (douban.com)](https://book.douban.com/tag/小说) ，进入每个标签下列出的书籍 url [书籍](https://book.douban.com/subject/4913064/)，保存书籍信息到 books.csv
 3. 在 2 步骤中，接着保存当前页的 短评 和 书评  
-   <img src="https://gitee.com/ruanxinwei/image/raw/master/image/image-20220121133843180.png" alt="image-20220121133843180" style="zoom: 50%;float:left;" />
+   <img src="https://gitee.com/ruanxinwei/image/raw/master/image/image-20220121133843180.png" alt="image-20220121133843180" />
+
+### Echarts
+
+![image-20220121202617192](https://gitee.com/ruanxinwei/image/raw/master/image/image-20220121202617192.png)
+
+![image-20220121202704856](https://gitee.com/ruanxinwei/image/raw/master/image/image-20220121202704856.png)
+
+
+
+| top 10 分类 柱状图 | 词云 | 词云 | top 10 出版社 柱状图 |
+| ------------------ | ---- | ---- | -------------------- |
+| 各月出版数量折线图 | 词云 | 词云 | 每本书的情感分析     |
+|                    |      |      |                      |
+
