@@ -52,9 +52,6 @@
    - 作者 author
    - 出版社 publisher
    - 出品方 producer
-   - 作者 author
-   - 出版社 publisher
-   - 出品方 producer
    - 原作名 originalName
    - 译者 translator
    - 出版年 publicationYear
