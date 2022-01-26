@@ -1,0 +1,31 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    container_name: docker_redis
+    expose:
+      - "6379"
+  # nginx:
+  #   restart: always
+  #   image: nginx
+  #   container_name: docker_nginx
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - ./nginx/conf.d:/etc/nginx/conf.d
+  #     - ./nginx/log:/var/log/nginx
+  #     - ./nginx/cert:/etc/nginx/cert
+  #   depends_on:
+  #     - flask
+  flask:
+    restart: always
+    build: .
+    expose:
+      - "5000"
+    ports:
+      - "8080:5000"
+    depends_on:
+      - redis
+    
+  

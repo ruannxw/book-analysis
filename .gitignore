@@ -136,3 +136,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# tmp Dir
+/tmp/
+
+/.idea/
+*/test/
