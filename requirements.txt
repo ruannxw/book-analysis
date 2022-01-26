@@ -4,3 +4,8 @@ requests==2.27.1
 python-dotenv==0.19.2
 gevent==21.12.0
 flask-restx==0.5.1
+pandas==1.1.5
+jieba==0.42.1
+snownlp==0.12.3
+gunicorn==20.1.0
+redis==4.1.1

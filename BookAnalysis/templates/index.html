@@ -5,9 +5,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>图书分析系统</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/index.css"/>
-    <link rel="icon" href="../static/images/icon.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css') }}"/>
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}"/>
 </head>
 
 <body>
@@ -34,66 +35,64 @@
 <div class="mainbox">
     <div class="container-xxl">
         <div class="row g-0">
-            <div class="col">
-                <div class="panel ">
+            <div class="col-3">
+                <div class="panel">
                     <h2>TOP10 图书分类</h2>
-                    <div class="chart" id="top10BookCategories">
-
-                    </div>
+                    <div class="chart" id="top10BookCategories"></div>
                     <div class="panel-footer"></div>
                 </div>
-                <div class="panel ">
+                <div class="panel">
                     <h2>各月出版数量折线图</h2>
-                    <div class="chart"></div>
+                    <div class="chart" id="everyMonthPublishNum"></div>
                     <div class="panel-footer"></div>
                 </div>
-                <div class="panel ">
-                    <h2></h2>
-                    <div class="chart"></div>
+                <div class="panel">
+                    <h2>各月评论数量</h2>
+                    <div class="chart" id="everyMonthCommentNum"></div>
                     <div class="panel-footer"></div>
                 </div>
             </div>
             <div class="col-6">
                 <div class="row g-0">
-                    <div class="col">
+                    <div class="col-12">
                         <div class="panel panel-lg">
-                            <h2>词云</h2>
-                            <div class="chart"></div>
+                            <h2>图书评论 词云图</h2>
+                            <div class="chart" id="wordCloud"></div>
                             <div class="panel-footer"></div>
                         </div>
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6">
+                    <div class="col-6">
                         <div class="panel">
-                            <h2></h2>
-                            <div class="chart"></div>
+                            <h2>TOP10 出版社</h2>
+                            <div class="chart" id="top10Publisher"></div>
                             <div class="panel-footer"></div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                         <div class="panel">
-                            <h2></h2>
-                            <div class="chart"></div>
+                            <h2>中外作者占比</h2>
+                            <div class="chart" id="proportionOfChineseAndForeignAuthors"></div>
                             <div class="panel-footer"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-3">
                 <div class="panel">
-                    <h2>TOP10 出版社</h2>
-                    <div class="chart"></div>
+                    <h2>每年作者出版数量动态变化</h2>
+                    <div class="chart" id="dynamicNumberOfPublisher"></div>
                     <div class="panel-footer"></div>
                 </div>
                 <div class="panel">
-                    <h2></h2>
-                    <div class="chart"></div>
+                    <h2>情感分析 图书评价</h2>
+                    <div class="chart" id="commentCategories"></div>
                     <div class="panel-footer"></div>
                 </div>
                 <div class="panel">
-                    <h2></h2>
-                    <div class="chart"></div>
+                    <h2>Top10 作者出版作品总数</h2>
+                    <div class="chart" id="top10Authors"></div>
                     <div class="panel-footer"></div>
                 </div>
             </div>
@@ -101,11 +100,38 @@
     </div>
 </div>
 
-<script src="../static/js/flexible.js"></script>
-<script src="../static/js/jquery-3.6.0.min.js"></script>
-<script src="../static/js/echarts.min.js"></script>
-<script src="../static/js/utils.js"></script>
-<script src="../static/js/data/top10BookCategories.js"></script>
+<script src="{{ url_for('static', filename='js/flexible.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/echarts.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/echarts-wordcloud.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+
+<script>
+    $(".chart").append('<div class="loader"><div class="ball-beat"><div></div><div></div><div></div></div></div>')
+    window.addEventListener('mousewheel', function (event) {
+        if (event.ctrlKey === true || event.metaKey) {
+            event.preventDefault();
+        }
+    }, {passive: false});
+
+    //firefox
+    window.addEventListener('DOMMouseScroll', function (event) {
+        if (event.ctrlKey === true || event.metaKey) {
+            event.preventDefault();
+        }
+    }, {passive: false});
+</script>
+
+<!-- 数据 -->
+<script src="{{ url_for('static', filename='js/data/top10BookCategories.js') }}"></script>
+<script src="{{ url_for('static', filename='js/data/everyMonthPublishNum.js') }}"></script>
+<script src="{{ url_for('static', filename='js/data/proportionOfChineseAndForeignAuthors.js') }}"></script>
+<script src="{{ url_for('static', filename='js/data/top10Publisher.js') }}"></script>
+<script src="{{ url_for('static', filename='js/data/everyMonthCommentNum.js') }}"></script>
+<script src="{{ url_for('static', filename='js/data/top10Authors.js') }}"></script>
+<script src="{{ url_for('static', filename='js/data/dynamicNumberOfPublisher.js') }}"></script>
+<script src="{{ url_for('static', filename='js/data/commentCategories.js') }}"></script>
+<script src="{{ url_for('static', filename='js/data/wordCloud.js') }}"></script>
 </body>
 
 </html>

@@ -69,7 +69,7 @@
 3. comments.csv [短评](https://book.douban.com/subject/35534519/comments/)  
    数据格式：
 
-   - ISBN isbn
+   - url
    - 评论人 person
    - 星级 star
    - 时间 time
@@ -79,7 +79,7 @@
 4. reviews.csv [书评](https://book.douban.com/subject/35534519/reviews)  
    数据格式：  
 
-   - ISBN isbn
+   - url
    - 评论人 person
    - 星级 star
    - 时间 time

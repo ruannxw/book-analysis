@@ -19,9 +19,11 @@ body {
     padding        : 0;
     /*  背景图定位 / 背景图尺寸  cover 完全铺满容器  contain 完整显示在容器内 */
     background     : url(../images/bg.jpg) no-repeat #000;
-    background-size: cover;
+    background-size: 1520px auto;
     /* 行高是字体1.15倍 */
     line-height    : 1.15;
+    min-width      : 1520px;
+    max-width      : 1520px;
 }
 
 header {
@@ -60,12 +62,13 @@ header {
 // }
 
 .panel {
-    position  : relative;
-    height    : 3.875rem;
-    border    : 1px solid rgba(25, 186, 139, 0.17);
-    background: rgba(255, 255, 255, 0.04) url(../images/line.png);
+    position     : relative;
+    // width: 280px;
+    height       : 250px;
+    border       : 1px solid rgba(25, 186, 139, 0.17);
+    background   : rgba(255, 255, 255, 0.04) url(../images/line.png);
     // padding   : 0 0.1875rem 0.5rem;
-    margin    : 0.1875rem;
+    margin       : 12px;
 
     &::before {
         position   : absolute;
@@ -89,44 +92,15 @@ header {
         border-right: 2px solid #02a6b5;
     }
 
-    // .panel-footer {
-    //     position: absolute;
-    //     left    : 0;
-    //     bottom  : 0;
-    //     width   : 100%;
-
-    //     &::before {
-    //         position     : absolute;
-    //         bottom       : 0;
-    //         left         : 0;
-    //         content      : "";
-    //         width        : 10px;
-    //         height       : 10px;
-    //         border-bottom: 2px solid #02a6b5;
-    //         border-left  : 2px solid #02a6b5;
-    //     }
-
-    //     &::after {
-    //         position     : absolute;
-    //         bottom       : 0;
-    //         right        : 0;
-    //         content      : "";
-    //         width        : 10px;
-    //         height       : 10px;
-    //         border-bottom: 2px solid #02a6b5;
-    //         border-right : 2px solid #02a6b5;
-    //     }
-    // }
-
     h2 {
-        height      : 0.6rem;
-        line-height : 0.6rem;
+        height      : 40px;
+        line-height : 40px;
         text-align  : left;
         color       : #fff;
-        font-size   : 0.25rem;
+        font-size   : 16px;
         font-weight : 400;
         padding-left: 20px;
-        margin: 0;
+        margin      : 0;
 
         a {
             margin         : 0 0.1875rem;
@@ -136,12 +110,24 @@ header {
     }
 
     .chart {
-        height: 80%;
+        height             : 200px;
         // background-color: #fff;
+        position           : relative;
+
+        .loader {
+            position : absolute;
+            top      : 50%;
+            left     : 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }
 
 .panel-lg {
-    height       : 7.9375rem;
+    height       : 510px;
     margin-bottom: 0;
+
+    .chart {
+        height: 470px;
+    }
 }
