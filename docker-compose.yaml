@@ -5,6 +5,15 @@ services:
     container_name: docker_redis
     expose:
       - "6379"
+  flask:
+    restart: always
+    build: .
+    expose:
+      - "5000"
+    ports:
+      - "8080:5000"
+    depends_on:
+      - redis
 #  nginx:
 #    restart: always
 #    image: nginx
@@ -18,14 +27,4 @@ services:
 #      - ./nginx/cert:/etc/nginx/cert
 #    depends_on:
 #      - flask
-  flask:
-    restart: always
-    build: .
-    expose:
-      - "5000"
-    ports:
-      - "8080:5000"
-    depends_on:
-      - redis
-    
   

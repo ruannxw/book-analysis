@@ -9,6 +9,10 @@ from lxml import etree
 
 class BookComment:
     def __init__(self, outfile=None):
+        """
+        初始化 爬虫
+        :param outfile: 输出的文件路径
+        """
         if outfile is None:
             outfile = 'bookComment.csv'
         self._outfile = outfile
@@ -20,6 +24,11 @@ class BookComment:
         self._all = None
 
     def crawl(self, url):
+        """
+        爬取页面
+        :param url: 页面 url
+        :return: 返回页面内容
+        """
         headers = self._headers
         headers['Referer'] = re.findall(r'https://book.douban.com/subject/\d+/', url)[0]
         resp = requests.get(url, headers=headers, timeout=10)
@@ -27,6 +36,11 @@ class BookComment:
         return content
 
     def parse(self, html):
+        """
+        解析页面
+        :param html: 页面内容
+        :return: 返回解析出来的数据
+        """
         root = etree.HTML(html)
         if self._all is None:
             readers = root.xpath('//*[@id="content"]/div/div[1]/div/div[1]/ul/li[1]/span//text()')[0].strip()
@@ -49,6 +63,12 @@ class BookComment:
         return _ans
 
     def save(self, data, url):
+        """
+        保存数据到文件
+        :param data: 需要保存的数据
+        :param url: 需要单独填写的 页面url
+        :return: None
+        """
         df = pd.DataFrame(data, columns=['person', 'star', 'time', 'score', 'comment'])
         df['url'] = url
         if os.path.exists(self._outfile):
@@ -57,6 +77,12 @@ class BookComment:
             df.to_csv(self._outfile, mode='a', index=False, header=True)
 
     def run(self, url, i):
+        """
+        运行爬虫
+        :param url: 爬虫 url
+        :param i: 遍历的序号
+        :return: 无返回值
+        """
         for sort in ['time', 'new_score']:
             start = 0
             while True:
