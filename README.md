@@ -2,6 +2,23 @@
 
 ## 项目文件简要介绍
 
+基于 Flask、Echarts 构建 Web 服务，采取前后端分离的开发模式，
+后端接口选用 RESTful 风格，构建 Swagger 文档，
+使用 pandas、numpy、snownlp、jieba 等库进行数据分析和处理，
+结合 redis 提高访问速度，
+采用 docker-compose 构建项目。
+
+## 项目启动
+
+```shell
+docker-compose up
+```
+## 项目访问
+```out
+localhost:8080
+```
+## 项目文件层级
+
 - .gitee ( gitee 配置文件)
 - BookAnalysis ( 项目代码 )
   - analysis ( 数据分析 )
@@ -29,64 +46,24 @@
 1. tags.csv [标签页面](https://book.douban.com/tag/?view=type&icn=index-sorttags-all)  
    数据格式：
    
-   - 父标签 parentTag
-   - 子标签 tag
-   - 数量 num
-   - url
-   
-   例子：  
-   
-   ```csv
-   parentTag,tag,url
-   文学,小说,https://book.douban.com/tag/%E5%B0%8F%E8%AF%B4
-   文学,文学,https://book.douban.com/tag/%E6%96%87%E5%AD%A6
-   ```
+    | 父标签 parentTag | 子标签 tag | url                                            | 数量 num |
+    | ---------------- | ---------- | ---------------------------------------------- | -------- |
+    | 文学             | 小说       | https://book.douban.com/tag/%E5%B0%8F%E8%AF%B4 | 200      |
    
 2. books.csv [书籍页面](https://book.douban.com/tag/%E6%96%87%E5%AD%A6)  
    数据格式：  
-
-   - 父标签 parentTag
-   - 子标签 tag
-   - url
-   - 书名 name
-   - 作者 author
-   - 出版社 publisher
-   - 出品方 producer
-   - 原作名 originalName
-   - 译者 translator
-   - 出版年 publicationYear
-   - 页数 pages
-   - 定价 price
-   - 装帧 bind
-   - 丛书 series
-   - ISBN isbn
-   - 得分 score
-   - 评价人数 evaluator
-   - 内容简介 content
-   - 作者简介 introductionAuthor
-   - 目录 menu
-   
-3. comments.csv [短评](https://book.douban.com/subject/35534519/comments/)  
+    | 父标签 parentTag | 子标签 tag | url | 书名 name | 作者 author | 出版社 publisher | 出品方 producer | 原作名 originalName | 译者 translator | 出版年 publicationYear | 页数 pages | 定价 price | 装帧 bind | 丛书 series | ISBN isbn | 得分 score | 评价人数 evaluator | 内容简介 content | 作者简介 introductionAuthor | 目录 menu |  
+    | ---------------- | ---------- | --- | --------- | ----------- | ---------------- | --------------- | ------------------- | --------------- | ---------------------- | ---------- | ---------- | --------- | ----------- | --------- | ---------- | ------------------ | ---------------- | --------------------------- | --------- |
+    
+1. comments.csv [短评](https://book.douban.com/subject/35534519/comments/)  
    数据格式：
+    |url|评论人 person|星级 star|时间 time|分数 score|评论 comment|
+    |--|--|--|--|--|--|
 
-   - url
-   - 评论人 person
-   - 星级 star
-   - 时间 time
-   - 分数 score
-   - 评论 comment
-
-4. reviews.csv [书评](https://book.douban.com/subject/35534519/reviews)  
+1. reviews.csv [书评](https://book.douban.com/subject/35534519/reviews)  
    数据格式：  
-
-   - url
-   - 评论人 person
-   - 星级 star
-   - 时间 time
-   - 有用 good
-   - 没用 bad
-   - 回应 reply
-   - 评论 comment
+    | url| 评论人 person| 星级 star| 时间 time| 有用 good| 没用 bad| 回应 reply| 评论 comment|
+    |--|--|--|--|--|--|--|--|
 
 #### 爬取步骤
 
@@ -95,16 +72,4 @@
 3. 在 2 步骤中，接着保存当前页的 短评 和 书评  
    <img src="https://gitee.com/ruanxinwei/image/raw/master/image/image-20220121133843180.png" alt="image-20220121133843180" />
 
-### Echarts
-
-![image-20220121202617192](https://gitee.com/ruanxinwei/image/raw/master/image/image-20220121202617192.png)
-
-![image-20220121202704856](https://gitee.com/ruanxinwei/image/raw/master/image/image-20220121202704856.png)
-
-
-
-| top 10 分类 柱状图 | 词云 | 词云 | top 10 出版社 柱状图 |
-| ------------------ | ---- | ---- | -------------------- |
-| 各月出版数量折线图 | 词云 | 词云 | 每本书的情感分析     |
-|                    |      |      |                      |
 
