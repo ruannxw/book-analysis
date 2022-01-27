@@ -45,7 +45,7 @@
             },
         },
         yAxis: {
-            name: '数量 单位: 千（本）',
+            name: '数量 单位: 万（本）',
             type: 'value',
             nameTextStyle: {
                 // 坐标轴名称样式
