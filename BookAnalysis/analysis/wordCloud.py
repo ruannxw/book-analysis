@@ -17,6 +17,7 @@ class Analysis(Base):
         super().__init__(filename)
 
     def getData(self):
+        # 选取评论数量最多的图书
         url = self.df['url'].value_counts().idxmax()
         df: pd.DataFrame = self.df.loc[self.df['url'] == url]
         # print(df.head())
@@ -24,6 +25,7 @@ class Analysis(Base):
         # print(df.columns)
         comments = df['comment'].astype(str).tolist()
         counts = {}
+        # 统计评论
         for comment in comments:
             words = jieba.cut(comment, use_paddle=True)
             for word in words:
@@ -39,9 +41,11 @@ class Analysis(Base):
         #     })
         # print(counts)
         # print(_ans)
+        # 按照 value 进行排序 dict
         counts = sorted(counts.items(), key=lambda item: item[1], reverse=True)
         _ans = []
         for key, value in counts:
+            # 获取前 200 个分词，减少网络传输压力
             if len(_ans) > 200:
                 break
             _ans.append({

@@ -1,5 +1,4 @@
 const request = (params) => {
-    const baseUrl = ''
     return new Promise((resolve, reject) => {
         $.ajax({
             ...params,

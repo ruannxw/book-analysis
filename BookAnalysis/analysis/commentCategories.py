@@ -5,11 +5,10 @@
 # @File    : commentCategories.py
 # @Software: PyCharm
 import jieba
-import pandas as pd
 from snownlp import SnowNLP
-from BookAnalysis.utils.base import Util
 
 from BookAnalysis.analysis.base import Base
+from BookAnalysis.utils.base import Util
 
 
 class Analysis(Base):
@@ -33,19 +32,19 @@ class Analysis(Base):
     def getData(self, name=None):
         # print(self.df.columns)
         # Index(['person', 'star', 'time', 'score', 'comment', 'url'], dtype='object')
-        # 一塌糊涂[0  , 0.2)
-        # 味同嚼蜡[0.2, 0.4)
-        # 差强人意[0.4, 0.6)
-        # 瑕不掩瑜[0.6, 0.8)
-        # 一致好评[0.8, 1  ]
+        # 一塌糊涂 [0  , 0.2)
+        # 味同嚼蜡 [0.2, 0.4)
+        # 差强人意 [0.4, 0.6)
+        # 瑕不掩瑜 [0.6, 0.8)
+        # 一致好评 [0.8, 1  ]
         comment_url = Util.getCommentUrlByName(name)
         df = self.df[self.df['url'] == comment_url]
         comments = df['comment'].astype(str).tolist()
         _ans = {}
         for comment in comments:
             words = jieba.cut(comment, use_paddle=True)
-            scores = 0
-            number = 0
+            scores = 0  # 平均分数
+            number = 0  # 处理过的分词数量
             for word in words:
                 if number > 20:
                     break
@@ -58,7 +57,7 @@ class Analysis(Base):
                     # print(word, scores)
             if number > 0:
                 scores /= number
-            key = self.getScore(scores)
+            key = self.getScore(scores)  # 格式化评价
             _ans[key] = _ans.get(key, 0) + 1
         print(_ans)
         return _ans
