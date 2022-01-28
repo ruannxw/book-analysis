@@ -154,13 +154,12 @@ if __name__ == '__main__':
     # bookInfo.run(url='https://book.douban.com/subject/34949694/', tag='小说')
     df = pd.read_csv('./bookItem.csv')
     length = len(df.index)
-    index = 0  # 阮新伟：0 吴继文：1 刘景瑞：2 李云华：3
+    index = 0  # 0 - 3
     # 步长
     step = length // 4
     # 起始 如果出现多次异常，把这个值设置为控制台中最后成功的数字
     # 例如： start = 900
-    # start = index * step  # 922
-    start = 1545
+    start = index * step
     end = (index + 1) * step
     for i in range(start, end):
         tag = df.iloc[i, 0]

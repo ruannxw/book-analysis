@@ -112,7 +112,7 @@ if __name__ == '__main__':
 
     df = pd.read_csv('./bookItem.csv')
     length = len(df.index)
-    index = 0  # 阮新伟：0 吴继文：1 刘景瑞：2 李云华：3 陈云涛：4
+    index = 0  # 0 - 4
     # 步长
     step = length // 5
     # 起始 如果出现多次异常，把这个值设置为控制台中最后成功的数字
